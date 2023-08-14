@@ -17,6 +17,9 @@
 /Assets/Oculus/
 /Assets/Plugins/UniRx/
 /Assets/WWR/
+/Assets/TutorialInfo/
+/Assets/MocopiReceiver/
+
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
