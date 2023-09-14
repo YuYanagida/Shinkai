@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityOSC;
+using UnityEngine.Events;
 
 public class OSCController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class OSCController : MonoBehaviour
     public string TargetAddr;
     public int OutGoingPort;
     public int InComingPort;
+    [SerializeField]
+    public UnityEvent OSCAction;
     #endregion
     private Dictionary<string, ServerLog> servers;
 
@@ -47,11 +50,18 @@ public class OSCController : MonoBehaviour
         }
 
         // データ送信部
-        if (Input.GetMouseButtonDown(0))
+        /*if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("SendMessage");
             var sampleVals = new List<int>() { 1, 2, 3 };
             OSCHandler.Instance.SendMessageToClient("iPhoneTouchOSCApp", "/lambda/msg", sampleVals);
-        }
+        }*/
+    }
+
+    public void SendData()//データ送信
+    {
+        Debug.Log("SendMessage");
+        var sampleVals = new List<int>() { 1, 2, 3 };
+        OSCHandler.Instance.SendMessageToClient("iPhoneTouchOSCApp", "/lambda/msg", sampleVals);
     }
 }
