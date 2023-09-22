@@ -7,10 +7,15 @@ public class Hand : MonoBehaviour
 {
     [SerializeField]
     public UnityEvent OSCAction;
+
+    //public GameObject eventobj;
     // Start is called before the first frame update
     void Start()
     {
-        
+        /*eventobj.AddComponent<BoxCollider>();
+        BoxCollider bcol = eventobj.GetComponent<BoxCollider>();
+        bcol.isTrigger = true;
+        eventobj.AddComponent<osc>();*/
     }
 
     // Update is called once per frame
