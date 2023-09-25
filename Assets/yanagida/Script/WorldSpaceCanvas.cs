@@ -9,7 +9,8 @@ public class WorldSpaceCanvas : MonoBehaviour
     public float x;
     public float z;
     private int h;
-    public GameObject[] uipannel;
+    public GameObject Player;
+    public GameObject uipannel;
     public GameObject _hand;
     public float Speed = 1.0f;
     float smooth = 10f;
@@ -20,6 +21,7 @@ public class WorldSpaceCanvas : MonoBehaviour
     private float count;
     public GameObject _ui;
     public Transform tra;
+    public Vector3 bec;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,16 +37,9 @@ public class WorldSpaceCanvas : MonoBehaviour
 
         //x = Input.GetAxis("Horizontal");
         //z = Input.GetAxis("Vertical");
-        var img = uipannel[h].GetComponent<Image>();
-
-        for( int i = 0; i < uipannel.Length; i++)
-        {
-            count = Vector3.Distance(uipannel[i].transform.position, _hand.transform.position);
-            if(count < dist)
-            {
-                h = i;
-            }
-        }
+        var img = uipannel.GetComponent<Image>();
+        bec = Player.transform.forward;
+        
 
         Vector3 target_dir = new Vector3(x, 0, z);
         rb.velocity = target_dir.normalized * Speed;         //•à‚­‘¬“x
@@ -57,55 +52,23 @@ public class WorldSpaceCanvas : MonoBehaviour
         }
         #endregion
 
-        float dd = Vector3.Distance(uipannel[h].transform.position, _hand.transform.position);
+        float dd = Vector3.Distance(uipannel.transform.position, _hand.transform.position);
 
         if (dd < dist && _ui.activeSelf == true)
         {
-            if(h == 0)
-            {
-                x = 0;
-                z = 1;
-                img = uipannel[0].GetComponent<Image>();
-            }
 
-            if (h == 1)
-            {
-                x = 0;
-                z = -1;
-                img = uipannel[1].GetComponent<Image>();
-            }
-
-            if (h == 2)
-            {
-                x = 1;
-                z = 0;
-                img = uipannel[2].GetComponent<Image>();
-            }
-
-            if (h == 3)
-            {
-                x = -1;
-                z = 0;
-                img = uipannel[3].GetComponent<Image>();
-            }
-
+            x = Player.transform.forward.x;
+            z = Player.transform.forward.z;
             img.color = new Color(0.6f, 0.6f, 0.6f);
         }
         else
         {
             x = 0;
             z = 0;
-
-            for(int qn= 0;qn < uipannel.Length;qn++)
-            {
-                img = uipannel[qn].GetComponent<Image>();
-                img.color = new Color(1, 1, 1);
-            }
-            
+            img.color = new Color(1, 1, 1);
         }
-
-        
     }
+}
 
     
 
@@ -143,4 +106,4 @@ public class WorldSpaceCanvas : MonoBehaviour
         x = -1;
         z = 0;
     }*/
-}
+

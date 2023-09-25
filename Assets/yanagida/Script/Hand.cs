@@ -7,6 +7,7 @@ public class Hand : MonoBehaviour
 {
     [SerializeField]
     public UnityEvent OSCAction;
+    public string tag1 = "Item";
 
     //public GameObject eventobj;
     // Start is called before the first frame update
@@ -26,6 +27,9 @@ public class Hand : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        OSCAction.Invoke();
+        if (other.CompareTag(tag1))
+        {
+            OSCAction.Invoke();
+        }
     }
 }
