@@ -12,6 +12,7 @@ public class WorldSpaceCanvas : MonoBehaviour
     public GameObject Player;
     public GameObject uipannel;
     public GameObject _hand;
+    public GameObject _head;
     public float Speed = 1.0f;
     float smooth = 10f;
     private Rigidbody rb;
@@ -38,33 +39,33 @@ public class WorldSpaceCanvas : MonoBehaviour
         //x = Input.GetAxis("Horizontal");
         //z = Input.GetAxis("Vertical");
         var img = uipannel.GetComponent<Image>();
-        bec = Player.transform.forward;
+        bec = _head.transform.forward;
         
 
-        Vector3 target_dir = new Vector3(x, 0, z);
-        rb.velocity = target_dir.normalized * Speed;         //歩く速度
-
-        if (target_dir.magnitude > 0.1)
-        {
-            //キーを押し方向転換
-            Quaternion rotation = Quaternion.LookRotation(target_dir);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * smooth);
-        }
+        
         #endregion
 
         float dd = Vector3.Distance(uipannel.transform.position, _hand.transform.position);
 
         if (dd < dist && _ui.activeSelf == true)
         {
+            Vector3 target_dir = new Vector3(bec.x, 0, bec.z);
+            rb.velocity = target_dir.normalized * Speed;         //歩く速度
 
-            x = Player.transform.forward.x;
-            z = Player.transform.forward.z;
+            Vector3 comFoward = new Vector3(Player.transform.forward.x, 0, Player.transform.forward.z).normalized;
+
+            if (target_dir.magnitude > 0.1)
+            {
+                //キーを押し方向転換
+                /*Quaternion rotation = Quaternion.LookRotation(target_dir);
+                transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * smooth);*/
+            }
+
             img.color = new Color(0.6f, 0.6f, 0.6f);
         }
         else
         {
-            x = 0;
-            z = 0;
+            rb.velocity = new Vector3(0, 0, 0);
             img.color = new Color(1, 1, 1);
         }
     }

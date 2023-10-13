@@ -36,7 +36,7 @@ public class UIAction : MonoBehaviour
         RockCountslider.value = value;
         value = 0;
         ClearUI.SetActive(false);
-        vacry = 1 / nearcrystal;
+        vacry = 1f / nearcrystal;
     }
 
     void Update()

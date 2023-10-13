@@ -50,12 +50,12 @@ public class OSCController : MonoBehaviour
         }
 
         // データ送信部
-        /*if (Input.GetMouseButtonDown(0))
+        if (Input.GetButtonDown("Fire3"))
         {
             Debug.Log("SendMessage");
             var sampleVals = new List<int>() { 1, 2, 3 };
             OSCHandler.Instance.SendMessageToClient("iPhoneTouchOSCApp", "/lambda/msg", sampleVals);
-        }*/
+        }
     }
 
     public void SendData()//データ送信
