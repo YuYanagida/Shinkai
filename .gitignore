@@ -23,7 +23,9 @@
 /Assets/MocopiReceiver/
 /Assets/WWR/__Common/
 /Assets/WWR/Norme/VRChat/
+/Assets/WWR/Norme/Common/Textures/
 /Assets/MocopiReceiver/Samples/
+/Assets/MocopiReceiver/Runtime/SonyMotionFormat/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
