@@ -21,7 +21,9 @@
 /Assets/UnityTechnologies/SpaceRobotKyle/
 /Recordings/
 /Assets/MocopiReceiver/
-/Assets/WWR
+/Assets/WWR/__Common/
+/Assets/WWR/Norme/VRChat/
+/Assets/MocopiReceiver/Samples/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
