@@ -23,6 +23,7 @@ public class UIAction : MonoBehaviour
     public float value;
     public int nearcrystal;
     private float vacry;
+    public GameObject webcam;
 
     public GameObject ClearUI;
 
@@ -37,6 +38,7 @@ public class UIAction : MonoBehaviour
         value = 0;
         ClearUI.SetActive(false);
         vacry = 1f / nearcrystal;
+        webcam.SetActive(false);
     }
 
     void Update()
@@ -71,9 +73,18 @@ public class UIAction : MonoBehaviour
 
         if(value >= 1)
         {
+            webcam.SetActive(true);
             ClearUI.SetActive(true);
             OSCAction.Invoke();
+            Invoke("Webcamoff", 5.0f);
         }
+    }
+
+    public void Webcamoff()
+    {
+
+        ClearUI.SetActive(false);
+        value = 0;
     }
 
     public void RockSlider()
